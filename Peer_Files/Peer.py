@@ -80,15 +80,17 @@ class Peer_Server:  # Connect Peer with Centeral-Server
         s.connect((HOST, Peer_id))
         data = pickle.dumps([DOWNLOAD, str(file_name)])
         s.send(data)
-        ret_data = pickle.loads(s.recv(1024))  # Organizing the path to download files
         file_path = os.path.join(os.getcwd(), '..')
         file_path = os.path.join(file_path, 'SharingFiles')
         file_path = os.path.join(file_path, "downloads")
-        with open(os.path.join(file_path, file_name),    # writing to file
-                  'wt') as myfile:
-            for x in range(0, len(ret_data)):
-                myfile.write(ret_data[x])
-            myfile.close()
+        with open(os.path.join(file_path, file_name),  # writing to file
+                  'wb') as myfile:
+            while True:
+                data = s.recv(1024)
+                if not data:
+                    myfile.close()
+                    break
+                myfile.write(data)
         s.close()
         print('File Downloaded Successfully')
 
