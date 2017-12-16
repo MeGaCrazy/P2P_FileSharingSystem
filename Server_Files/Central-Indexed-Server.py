@@ -26,7 +26,7 @@ class Server(threading.Thread):
             print("Got Connection From ", addr[0], " : ", addr[1])
             request = pickle.loads(conn.recv(1024))
 
-            if request[0] == REGISTER:
+            if request[0] == REGISTER:  # Register File and Send Confirmation Msg
                 print("Peer ", addr[1], " ,Add New File\n")
                 self.semaphore.acquire()
                 self.register(request[1], request[2], str(datetime.now()))
@@ -34,28 +34,35 @@ class Server(threading.Thread):
                 conn.send(bytes(ret, 'utf-8'))
                 self.semaphore.release()
                 conn.close()
-            elif request[0] == SEARCH:
+
+
+            elif request[0] == SEARCH:  # Search for File_Name and return List of Files That Match the name
                 print("Peer ", addr[1], " ,Searching For a File\n")
                 self.semaphore.acquire()
                 ret_data = pickle.dumps(self.Search_data(request[1]))
                 conn.send(ret_data)
                 self.semaphore.release()
                 conn.close()
-            elif request[0] == LIST_ALL:
+
+
+
+            elif request[0] == LIST_ALL:  # List All Exiting Files and return as a object with pickle
                 print("Peer ", addr[1], " ,Listing all Exiting Files\n")
                 self.semaphore.acquire()
                 ret_data = pickle.dumps(self.all_data())
                 conn.send(ret_data)
                 self.semaphore.release()
                 conn.close()
+
+
             else:
                 continue
 
-    def register(self, peer_id, file_name, Date):
-        entry = [str(peer_id), file_name, str(Date)]
+    def register(self, peer_id, file_name, Date):  # Store all Files in format
+        entry = [str(peer_id), file_name, str(Date)]  # peer_id', 'file_name', 'Date_added'
         self.Files.insert(0, dict(zip(self.keys, entry)))
 
-    def Search_data(self, file_name):
+    def Search_data(self, file_name):  # Return File Match name we Search For
         ret = []
         for item in self.Files:
             if item['file_name'] == file_name:
@@ -63,13 +70,13 @@ class Server(threading.Thread):
                 ret.insert(0, dict(zip(self.keys, entry)))
         return ret, self.keys
 
-    def all_data(self):
+    def all_data(self):  # Return all Exiting Files
         return self.Files, self.keys
 
 
 def Start_Server():
     print("Welcome!!..CENTRAL INDEX SERVER IS UP AND RUNNING.\n")
-    server = Server(HOST, PORT, 5)
+    server = Server(HOST, PORT, 5)  # Start the Central Server
     server.start()
 
 

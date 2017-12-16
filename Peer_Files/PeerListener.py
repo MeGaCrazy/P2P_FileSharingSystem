@@ -23,7 +23,7 @@ class PeerListener(threading.Thread):
             conn, addr = self.sock.accept()
             print("Got Connection From ", addr[0], " : ", addr[1])
             request = pickle.loads(conn.recv(1024))
-            if request[0] == DOWNLOAD:
+            if request[0] == DOWNLOAD:            # Organizing the path of file that will be shared
                 file_path = os.path.join(os.getcwd(), '..')
                 file_path = os.path.join(file_path, 'SharingFiles')
                 file_path = os.path.join(file_path, "Uploads")
@@ -31,7 +31,7 @@ class PeerListener(threading.Thread):
                 Full_path = os.path.join(file_path, file_name)
                 print(Full_path)
                 self.semaphore.acquire()
-                ret = []
+                ret = []            # Each elements will held the line of file and send as object with pickle
                 with open(Full_path, "rt") as myfile:
                     for data in myfile:
                         ret.append(data)
@@ -45,5 +45,5 @@ class PeerListener(threading.Thread):
 
 
 def Start_PeerListener(port, host):
-    peer = PeerListener(port, host, 5)
+    peer = PeerListener(port, host, 5)      # Start Thread listen to peer_id to share the files with others Peers
     peer.start()
