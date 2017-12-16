@@ -29,10 +29,9 @@ class PeerListener(threading.Thread):
                 file_path = os.path.join(file_path, "Uploads")
                 file_name = request[1]
                 Full_path = os.path.join(file_path, file_name)
-                print(Full_path)
                 self.semaphore.acquire()
-                ret = []  # Each elements will held the line of file and send as object with pickle
-                with open(Full_path, "rb") as myfile:
+
+                with open(Full_path, "rb") as myfile:       # Start Transfer File to Other Peer
                     while True:
                         l = myfile.read(2014)
                         while (l):
