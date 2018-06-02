@@ -15,29 +15,29 @@ simultaneously
 
 ##How To Run it
 1. Run Central-IndexedServer.py
-[![N|Solid](https://ibb.co/jrk9hd)]()
+[![N|Solid](https://ibb.co/jrk9hd)](https://ibb.co/gk5s2d)
 
 2. Run Peer.py
-[![N|Solid](https://ibb.co/cKwMvy)]()
+[![N|Solid](https://ibb.co/cKwMvy)](https://ibb.co/gk5s2d)
 
 ###Register File:
 1. Choose `1` From Output Choices
 2. Add File to Uploads Folders
 3. Add Your `Peer_Id`
 4. Add You `File_Name`
-[![N|Solid](https://ibb.co/hHALoJ]()
+[![N|Solid](https://ibb.co/hHALoJ](https://ibb.co/gk5s2d)
 
 ###List all Files
 1. Choose `4` From Output Choices
-[![N|Solid](https://ibb.co/jeC5Nd]()
+[![N|Solid](https://ibb.co/jeC5Nd](https://ibb.co/gk5s2d)
 
 ###Open another Peer and Search For this file
 1.Choose `2` From output Choices
 2.type `File name` you Search For
-[![N|Solid](https://ibb.co/nqZ22d]()
+[![N|Solid](https://ibb.co/nqZ22d](https://ibb.co/gk5s2d)
 
 ###Download File
 1. Choose `4` From Output List
 2. type`PEER_ID`That have the file
 3. type `file name`
-[![N|Solid](https://ibb.co/gk5s2d]()
+[![N|Solid](https://ibb.co/gk5s2d](https://ibb.co/gk5s2d)
