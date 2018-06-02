@@ -15,6 +15,7 @@ simultaneously
 
 ##How To Run it
 1. Run Central-IndexedServer.py
+
 [![N|Solid](https://scontent-cai1-1.xx.fbcdn.net/v/t1.15752-9/34189460_2117897565157009_8182704136798601216_n.png?_nc_cat=0&oh=86d0e8c009d6d74e038490558a342f7d&oe=5BB90742)]()
 
 2. Run Peer.py
